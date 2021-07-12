@@ -1,10 +1,9 @@
+
 # Regex: Matching a URL
 
 This Gist describes the basic componenets of Regular Expressions (Regex) specifically as they pertain to matching a URL.  The Regex below will be examined and described.
 
-```regex
-/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
-```
+![Screen Shot 2021-07-11 at 5 22 53 PM](https://user-images.githubusercontent.com/79954805/125214916-6ee95f00-e26e-11eb-8552-48a099084620.png)
 
 ## Summary
 
@@ -40,7 +39,7 @@ Match Any [\s\s]
 Word \w
 Digit \d
 
-(img)
+![Screen Shot 2021-07-11 at 4 42 38 PM](https://user-images.githubusercontent.com/79954805/125214965-a35d1b00-e26e-11eb-91ae-f3c53c5541c3.png)
 
 ### Flags
 This expression uses the multi-line flag by utilizing the ^ and the $ at the beginning and end of the expression, respectively.  These signify the beginning and end of a line or string. 
@@ -48,27 +47,19 @@ This expression uses the multi-line flag by utilizing the ^ and the $ at the beg
 Capture groups indicate a substring to be searched for and the URL expression has four capture groups each indicated by an opening and closing parenthesis. 
 
 Capture groups allow you to refer to an entire sub-expression when needed.  In our case, for example, 
+![Screen Shot 2021-07-11 at 5 23 03 PM](https://user-images.githubusercontent.com/79954805/125214936-86284c80-e26e-11eb-8f32-30d9349c9a34.png)
 
-```regex
-(https?:\/\/)?
-```
 the question mark is referring to the entire set of characters within the parentheses.  The question mark is a quantifier signifying that the search criteria is to look for anything that matches 0-1 of the preceding search within the parenthesis.  In our case, we are specifying that if a phrase begins with https://, it is to be included, but if it doesn't, it can also be included (in a case where the text does not include the https:// but is still a url).
 ### Bracket Expressions
 Brackets are used to find a range of characters.  In the URL expression brackets are used to indicate three different sets of expressions: 
+![Screen Shot 2021-07-11 at 5 23 11 PM](https://user-images.githubusercontent.com/79954805/125214943-8c1e2d80-e26e-11eb-8e3f-b7a59c283bdb.png)
 
-```regex
-[\da-z\.-]
-[a-z\.]
-[\/\w \.-]
-```
+
 ### Greedy and Lazy Match
 Greedy and lazy describe quantifiers.  By default, quantifiers are "greedy" or they attempt to match as many portions of the expression as possible.  However, you can indicate that a search should match as few characters as possible by utilizing the question mark.  
 
 In our example, the questions mark is used twice to indicate that as little should match as possible in the preceding set of characters (after https closing bracket and before the closing dollar side at the end of the expression).
-
-```regex
-^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$.
-```
+![Screen Shot 2021-07-11 at 5 23 19 PM](https://user-images.githubusercontent.com/79954805/125214949-93453b80-e26e-11eb-8959-6d2de37f4031.png)
 
 ### Boundaries
 Boundaries can indicate the beginning of an expression, the end of an expression, word boundaries, and not word boundaries.
